@@ -1,0 +1,93 @@
+<!--<div class="row">-->
+<!--  <div class="col-6 offset-3">-->
+<!--    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">-->
+<!--      <div class="mb-3">-->
+<!--        <label for="inputName" class="form-label">Name</label>-->
+<!--        <input type="email" class="form-control" id="inputName" formControlName="first_name">-->
+<!--        <div class="form-text text-danger" *ngIf="registerFormControls['first_name'].invalid && (registerFormControls['first_name'].dirty || registerFormControls['first_name'].touched)">-->
+<!--          <ng-container *ngIf="registerFormControls['first_name'].errors?.['required']">-->
+<!--            Please enter your first name.-->
+<!--          </ng-container>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label for="inputName" class="form-label">Name</label>-->
+<!--        <input type="email" class="form-control" id="inputLName" formControlName="last_name">-->
+<!--        <div class="form-text text-danger" *ngIf="registerFormControls['last_name'].invalid && (registerFormControls['last_name'].dirty || registerFormControls['last_name'].touched)">-->
+<!--          <ng-container *ngIf="registerFormControls['last_name'].errors?.['required']">-->
+<!--            Please enter your name.-->
+<!--          </ng-container>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label for="inputEmail" class="form-label">Email address</label>-->
+<!--        <input type="email" class="form-control" id="inputEmail" formControlName="email">-->
+<!--        <div class="form-text text-danger" *ngIf="registerFormControls['email'].invalid && (registerFormControls['email'].dirty || registerFormControls['email'].touched)">-->
+<!--          <ng-container *ngIf="registerFormControls['email'].errors?.['required']">-->
+<!--            Please enter your email.-->
+<!--          </ng-container>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label for="inputPassword" class="form-label">Password</label>-->
+<!--        <input type="password" class="form-control" id="inputPassword" formControlName="password">-->
+<!--        <div class="form-text text-danger" *ngIf="registerFormControls['password'].invalid && (registerFormControls['password'].dirty || registerFormControls['password'].touched)">-->
+<!--          <ng-container *ngIf="registerFormControls['password'].errors?.['required']">-->
+<!--            Please enter your password.-->
+<!--          </ng-container>-->
+<!--          <ng-container *ngIf="registerFormControls['password'].errors?.['pattern'] && !registerFormControls['password'].errors?.['required']">-->
+<!--            Password should contains a lowercase, a uppercase character and a digit.-->
+<!--          </ng-container>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid || isSubmitted">Submit</button>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->
+
+<div class="row">
+  <div class="col-6 offset-3">
+    <form>
+      <div class="mb-3">
+        <label for="inputName" class="form-label">First Name</label>
+        <input type="email" class="form-control" id="inputName" name="first_name" [(ngModel)]="user.first_name">
+<!--        <div class="form-text text-danger" *ngIf="registerFormControls['first_name'].invalid && (registerFormControls['first_name'].dirty || registerFormControls['first_name'].touched)">-->
+<!--          <ng-container *ngIf="registerFormControls['first_name'].errors?.['required']">-->
+<!--            Please enter your first name.-->
+<!--          </ng-container>-->
+<!--        </div>-->
+      </div>
+      <div class="mb-3">
+        <label for="inputName" class="form-label">Name</label>
+        <input type="email" class="form-control" id="inputLName" name="last_name" [(ngModel)]="user.last_name">
+<!--        <div class="form-text text-danger" *ngIf="registerFormControls['last_name'].invalid && (registerFormControls['last_name'].dirty || registerFormControls['last_name'].touched)">-->
+<!--          <ng-container *ngIf="registerFormControls['last_name'].errors?.['required']">-->
+<!--            Please enter your name.-->
+<!--          </ng-container>-->
+<!--        </div>-->
+      </div>
+      <div class="mb-3">
+        <label for="inputEmail" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="inputEmail" name="email" [(ngModel)]="user.email">
+<!--        <div class="form-text text-danger" *ngIf="registerFormControls['email'].invalid && (registerFormControls['email'].dirty || registerFormControls['email'].touched)">-->
+<!--          <ng-container *ngIf="registerFormControls['email'].errors?.['required']">-->
+<!--            Please enter your email.-->
+<!--          </ng-container>-->
+<!--        </div>-->
+      </div>
+      <div class="mb-3">
+        <label for="inputPassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="inputPassword" name="password" [(ngModel)]="user.password">
+<!--        <div class="form-text text-danger" *ngIf="registerFormControls['password'].invalid && (registerFormControls['password'].dirty || registerFormControls['password'].touched)">-->
+<!--          <ng-container *ngIf="registerFormControls['password'].errors?.['required']">-->
+<!--            Please enter your password.-->
+<!--          </ng-container>-->
+<!--          <ng-container *ngIf="registerFormControls['password'].errors?.['pattern'] && !registerFormControls['password'].errors?.['required']">-->
+<!--            Password should contains a lowercase, a uppercase character and a digit.-->
+<!--          </ng-container>-->
+<!--        </div>-->
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="postRegister()">Submit</button>
+    </form>
+  </div>
+</div>
