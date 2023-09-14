@@ -35,7 +35,6 @@ export class AuthService {
   }
   profile() {
     return this.http.get(`${this.baseUrl}/profile`);
-
   }
   logout() {
     return this.http.get(`${this.baseUrl}/logout`)

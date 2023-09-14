@@ -47,33 +47,45 @@
 
 <div class="row">
   <div class="col-6 offset-3">
-    <form>
+    <form name="form" #myForm="ngForm" (ngSubmit)="myForm.form.valid && postRegister()">
       <div class="mb-3">
-        <label for="inputName" class="form-label">First Name</label>
-        <input type="email" class="form-control" id="inputName" name="first_name" [(ngModel)]="user.first_name">
-<!--        <div class="form-text text-danger" *ngIf="registerFormControls['first_name'].invalid && (registerFormControls['first_name'].dirty || registerFormControls['first_name'].touched)">-->
-<!--          <ng-container *ngIf="registerFormControls['first_name'].errors?.['required']">-->
-<!--            Please enter your first name.-->
-<!--          </ng-container>-->
-<!--        </div>-->
+        <label class="form-label">First Name</label>
+        <input type="text" class="form-control" id="inputName" name="first_name" [(ngModel)]="user.first_name" #first_name="ngModel" required>
+
+        <div [hidden]="first_name.valid || first_name.pristine" class="alert alert-danger">
+          Name is required
+        </div>
       </div>
-      <div class="mb-3">
-        <label for="inputName" class="form-label">Name</label>
-        <input type="email" class="form-control" id="inputLName" name="last_name" [(ngModel)]="user.last_name">
-<!--        <div class="form-text text-danger" *ngIf="registerFormControls['last_name'].invalid && (registerFormControls['last_name'].dirty || registerFormControls['last_name'].touched)">-->
-<!--          <ng-container *ngIf="registerFormControls['last_name'].errors?.['required']">-->
-<!--            Please enter your name.-->
-<!--          </ng-container>-->
-<!--        </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label for="inputName" class="form-label">Name</label>-->
+<!--        <input type="email" class="form-control" id="inputLName" name="last_name" [(ngModel)]="user.last_name">-->
+<!--      </div>-->
+      <div class="form-group">
+        <label>Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="last_name"
+          [(ngModel)]="user.last_name"
+          required
+          minlength="6"
+          maxlength="20"
+          #last_name="ngModel"
+          [ngClass]="{ 'is-invalid': myForm.submitted && last_name.errors }"
+        />
+        <div *ngIf="myForm.submitted && last_name.errors" class="invalid-feedback">
+          <div *ngIf="last_name.errors['required']">Last Name is required</div>
+          <div *ngIf="last_name.errors['minlength']">
+            Last Name must be at least 6 characters
+          </div>
+          <div *ngIf="last_name.errors['maxlength']">
+            Last Name must be at most 20 characters
+          </div>
+        </div>
       </div>
       <div class="mb-3">
         <label for="inputEmail" class="form-label">Email address</label>
         <input type="email" class="form-control" id="inputEmail" name="email" [(ngModel)]="user.email">
-<!--        <div class="form-text text-danger" *ngIf="registerFormControls['email'].invalid && (registerFormControls['email'].dirty || registerFormControls['email'].touched)">-->
-<!--          <ng-container *ngIf="registerFormControls['email'].errors?.['required']">-->
-<!--            Please enter your email.-->
-<!--          </ng-container>-->
-<!--        </div>-->
       </div>
       <div class="mb-3">
         <label for="inputPassword" class="form-label">Password</label>
@@ -87,7 +99,7 @@
 <!--          </ng-container>-->
 <!--        </div>-->
       </div>
-      <button type="submit" class="btn btn-primary" (click)="postRegister()">Submit</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
 </div>
